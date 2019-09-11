@@ -1,9 +1,7 @@
 import React from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
-class MapInput extends React.Component {
-
-    render() {
+function MapInput(props){
         return (
 
             <GooglePlacesAutocomplete
@@ -14,19 +12,15 @@ class MapInput extends React.Component {
                 listViewDisplayed={false}    // true/false/undefined
                 fetchDetails={true}
                 onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
-                    this.props.notifyChange(details.geometry.location);
-                }
-                }
-
+                    props.notifyChange(details.geometry.location);
+                }}
                 query={{
                     key: 'YOUR_API_KEY_HERE',
                     language: 'en'
                 }}
-
                 nearbyPlacesAPI='GooglePlacesSearch'
                 debounce={300}
             />
         );
-    }
 }
 export default MapInput;
